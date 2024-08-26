@@ -25,9 +25,9 @@ Integrantes:
 ---
 
 # LÍNEAS BASES
-Nuestras lineas bases seran establecidas considerando la fecha de los parciales, seran hechas el mismo dia, luego de haber realizado el examen.
+Vamos a establecer las lineas bases considerando la fecha de los parciales, serán hechas el mismo dia, luego de haber realizado el examen.
 
-LAS FECHAS SERAN:
+LAS FECHAS SON:
  * 28/09/2024
  * 26/10/2024
  * 23/11/2024
