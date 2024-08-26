@@ -19,8 +19,8 @@ Integrantes:
 | Trabajo de investigación                                   | `<NOMBRE_TIG>.pdf`                                          | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosEvaluables`       |
 | Programa Asignatura                                        | `ProgramaAsignatura_2024.pdf`                               | `/Repositorio_ICS_G3 `                                                    |
 | Trabajo Grupal No Evaluable                                | `TP_<N>.pdf`                                                | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosNoEvaluables  `   |
-| Parciales                                                  | `Parcial_<N>_<APELLIDO_INTEGRANTE>.pdf`                      | `/Repositorio_ICS_G3/Parciales  `                                         |
-| Recuperatorio                                              | `Recuperatorio_<N_PARCIAL>_<APELLIDO_INTEGRANTE>.pdf`         | `/Repositorio_ICS_G3/Parciales  `                                         |
+| Parciales                                                  | `Parcial_<N>_<APELLIDO_INTEGRANTE>.pdf`                     | `/Repositorio_ICS_G3/Parciales  `                                         |
+| Recuperatorio                                              | `Recuperatorio_<N_PARCIAL>_<APELLIDO_INTEGRANTE>.pdf`       | `/Repositorio_ICS_G3/Parciales  `                                         |
 
 ---
 
@@ -39,9 +39,9 @@ LAS FECHAS SON:
 | **Sigla**                 | **Significado**                                                      |
 |---------------------------|----------------------------------------------------------------------|
 | `<N>`                     | Número entero en formato de dos digitos.                             |
-| `<APELLIDO_INTEGRANTE>`    | Apellido del integrante que ha realizado el parcial o recuperatorio. |
+| `<APELLIDO_INTEGRANTE>`   | Apellido del integrante que ha realizado el parcial o recuperatorio. |
 | `<NOMBRE_BLI>`            | Nombre de la bibliografia.                                           |
-| `<NOMBRE_TIG>`            | Nombre del Trabajo de Investigación Grupal.                              |
-| `<N_PARCIAL>`              | Numero entero del parcial que se ha recuperado en dos digitos.       |
+| `<NOMBRE_TIG>`            | Nombre del Trabajo de Investigación Grupal.                          |
+| `<N_PARCIAL>`             | Numero entero del parcial que se ha recuperado en dos digitos.       |
 
 
