@@ -21,3 +21,16 @@ Integrantes:
 | Trabajo Grupal No Evaluable                                | `TP_<N>.pdf`                                                | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosNoEvaluables  `   |
 | Parciales                                                  | `Parcial_<N>_<ApellidoIntegrante>.pdf`                      | `/Repositorio_ICS_G3/Parciales  `                                         |
 | Recuperatorio                                              | `Recuperatorio_<NParcial>_<ApellidoIntegrante>.pdf`         | `/Repositorio_ICS_G3/Parciales  `                                         |
+
+---
+
+# LÍNEAS BASES
+Nuestras lineas bases seran establecidas considerando la fecha de los parciales, seran hechas el mismo dia, luego de haber realizado el examen.
+
+LAS FECHAS SERAN:
+ * 28/09/2024
+ * 26/10/2024
+ * 23/11/2024
+
+---
+
