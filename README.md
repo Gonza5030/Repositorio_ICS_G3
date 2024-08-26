@@ -25,7 +25,7 @@ Integrantes:
 ---
 
 # LÍNEAS BASES
-Vamos a establecer las lineas bases considerando la fecha de los parciales, serán hechas el mismo dia, luego de haber realizado el examen.
+Vamos a establecer las líneas bases considerando la fecha de los parciales, serán hechas el mismo día, luego de haber realizado el examen.
 
 LAS FECHAS SON:
  * 28/09/2024
@@ -33,4 +33,15 @@ LAS FECHAS SON:
  * 23/11/2024
 
 ---
+
+#GLOSARIO
+
+| **Sigla**                 | **Significado**                                                      |
+|---------------------------|----------------------------------------------------------------------|
+| `<N>`                     | Número entero en formato de dos digitos.                             |
+| `<ApellidoIntegrante>`    | Apellido del integrante que ha realizado el parcial o recuperatorio. |
+| `<NOMBRE_BLI>`            | Nombre de la bibliografia.                                           |
+| `<NOMBRE_TIG>`            | Nombre del Trabajo Práctico Integrador.                              |
+| `<NParcial>`              | Numero entero del parcial que se ha recuperado en dos digitos.       |
+
 
