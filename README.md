@@ -8,4 +8,16 @@ Integrantes:
   * Sposetti Joaquin
   * Tosello Guillermina
   * Weihmuller Matias
+    
   Link al Informe
+
+| **Nombre del Ítem de Configuración**                       | **Regla de Nombrado**                                       | **Ubicación Física**                                                      |
+|------------------------------------------------------------|-------------------------------------------------------------|---------------------------------------------------------------------------|
+| Bibliografía                                               | `<NOMBRE_BLI>.pdf`                                          | `/Repositorio_ICS_G3/Material/Bibliografía`                               |
+| Presentaciones de clase                                    | `Presentaciones_Clases.xslx`                                | `/Repositorio_ICS_G3/Material/PresentacionesDeClases`                     |
+| Trabajo Grupal Evaluable                                   | `TP_<N>.pdf`                                                | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosEvaluables`       |
+| Trabajo de investigación                                   | `<NOMBRE_TIG>.pdf`                                          | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosEvaluables`       |
+| Programa Asignatura                                        | `ProgramaAsignatura_2024.pdf`                               | `/Repositorio_ICS_G3 `                                                    |
+| Trabajo Grupal No Evaluable                                | `TP_<N>.pdf`                                                | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosNoEvaluables  `   |
+| Parciales                                                  | `Parcial_<N>_<ApellidoIntegrante>.pdf`                      | `/Repositorio_ICS_G3/Parciales  `                                         |
+| Recuperatorio                                              | `Recuperatorio_<NParcial>_<ApellidoIntegrante>.pdf`         | `/Repositorio_ICS_G3/Parciales  `                                         |
