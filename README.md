@@ -1,7 +1,7 @@
 # Repositorio_ICS_G3
 Repositorio para el uso durante el cursado de la materia Ingeniería y Calidad de Software, realizado por el Grupo 3 del curso 4k1.
 
-# Integrantes:
+## Integrantes:
   * Basta Nicolas
   * Maidana Gonzalo Daniel
   * Minolli Valentin
