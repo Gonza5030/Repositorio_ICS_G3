@@ -1,5 +1,5 @@
 # Repositorio_ICS_G3
-Repositorio para el uso durante el cursado de la materia Ingeniería y Calidad de Software, realizado por el grupo 3 curso 4k1.
+Repositorio para el uso durante el cursado de la materia Ingeniería y Calidad de Software, realizado por el Grupo 3 del curso 4k1.
 Integrantes:
   * Basta Nicolas
   * Maidana Gonzalo Daniel
@@ -9,7 +9,11 @@ Integrantes:
   * Tosello Guillermina
   * Weihmuller Matias
     
-  Link al Informe
+  ---
+ #  Link al Informe
+ 
+  ---
+# Listado Items de Configuración 
 
 | **Nombre del Ítem de Configuración**                       | **Regla de Nombrado**                                       | **Ubicación Física**                                                      |
 |------------------------------------------------------------|-------------------------------------------------------------|---------------------------------------------------------------------------|
@@ -25,25 +29,25 @@ Integrantes:
 
 ---
 
-# LÍNEAS BASES
-Vamos a establecer las líneas bases considerando la fecha de los parciales, serán hechas el mismo día, luego de haber realizado el examen. De esta forma aseguramos que el repositorio refleje el progreso en relación con los contenidos y habilidades adquiridas hasta esos momentos.
+# Líneas Base
+Estableceremos las líneas bases considerando la fecha de los parciales, realizándolas el mismo día, luego de haber completado el exámen. De esta forma aseguramos que el repositorio refleje el progreso en relación con los contenidos y habilidades adquiridas hasta esos momentos.
 
-LAS FECHAS SON:
+Fechas:
  * 28/09/2024
  * 26/10/2024
  * 23/11/2024
 
 ---
 
-# GLOSARIO 
+# Glosario
 
 | **Sigla**                 | **Significado**                                                      |
 |---------------------------|----------------------------------------------------------------------|
-| `<NOMBRE_BLI>`            | Nombre de la bibliografia.                                           |
-| `<N>`                     | Número entero en formato de dos digitos.                             |
+| `<NOMBRE_BLI>`            | Nombre de la bibliografía.                                           |
+| `<N>`                     | Número entero en formato de dos dígitos.                             |
 | `<TEMA>`                  | Nombre que indica el tema abordado en la presentación .              |
 | `<APELLIDO_INTEGRANTE>`   | Apellido del integrante que ha realizado el parcial o recuperatorio. |
 | `<NOMBRE_TIG>`            | Nombre del Trabajo de Investigación Grupal.                          |
-| `<N_PARCIAL>`             | Numero entero del parcial que se ha recuperado en dos digitos.       |
+| `<N_PARCIAL>`             | Número entero del parcial que se ha recuperado en dos dígitos.       |
 
 
