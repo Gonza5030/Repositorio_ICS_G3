@@ -14,7 +14,7 @@ Integrantes:
 | **Nombre del Ítem de Configuración**                       | **Regla de Nombrado**                                       | **Ubicación Física**                                                      |
 |------------------------------------------------------------|-------------------------------------------------------------|---------------------------------------------------------------------------|
 | Bibliografía                                               | `<NOMBRE_BLI>.pdf`                                          | `/Repositorio_ICS_G3/Material/Bibliografía`                               |
-| Presentaciones de Clase                                    | `Presentaciones_Clases.xslx`                                | `/Repositorio_ICS_G3/Material/PresentacionesDeClases`                     |
+| Clases Grabadas                                            | `Clases_Grabadas.xslx`                                      | `/Repositorio_ICS_G3/Material`                                            |
 | Trabajo Grupal Evaluable                                   | `TP_<N>.pdf`                                                | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosEvaluables`       |
 | Trabajo de investigación                                   | `<NOMBRE_TIG>.pdf`                                          | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosEvaluables`       |
 | Programa Asignatura                                        | `ProgramaAsignatura_2024.pdf`                               | `/Repositorio_ICS_G3 `                                                    |
