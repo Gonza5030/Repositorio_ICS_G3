@@ -35,13 +35,14 @@ LAS FECHAS SON:
 
 ---
 
-# GLOSARIO
+# GLOSARIO 
 
 | **Sigla**                 | **Significado**                                                      |
 |---------------------------|----------------------------------------------------------------------|
-| `<N>`                     | Número entero en formato de dos digitos.                             |
-| `<APELLIDO_INTEGRANTE>`   | Apellido del integrante que ha realizado el parcial o recuperatorio. |
 | `<NOMBRE_BLI>`            | Nombre de la bibliografia.                                           |
+| `<N>`                     | Número entero en formato de dos digitos.                             |
+| `<TEMA>`                  | Nombre que indica el tema abordado en la presentación .              |
+| `<APELLIDO_INTEGRANTE>`   | Apellido del integrante que ha realizado el parcial o recuperatorio. |
 | `<NOMBRE_TIG>`            | Nombre del Trabajo de Investigación Grupal.                          |
 | `<N_PARCIAL>`             | Numero entero del parcial que se ha recuperado en dos digitos.       |
 
