@@ -9,10 +9,9 @@ Integrantes:
   * Tosello Guillermina
   * Weihmuller Matias
     
-  ---
  #  Link al Informe
  
-  ---
+
 # Listado Items de Configuración 
 
 | **Nombre del Ítem de Configuración**                       | **Regla de Nombrado**                                       | **Ubicación Física**                                                      |
@@ -27,7 +26,6 @@ Integrantes:
 | Parciales                                                  | `Parcial_<N>_<APELLIDO_INTEGRANTE>.pdf`                     | `/Repositorio_ICS_G3/Parciales  `                                         |
 | Recuperatorio                                              | `Recuperatorio_<N_PARCIAL>_<APELLIDO_INTEGRANTE>.pdf`       | `/Repositorio_ICS_G3/Parciales  `                                         |
 
----
 
 # Líneas Base
 Estableceremos las líneas bases considerando la fecha de los parciales, realizándolas el mismo día, luego de haber completado el exámen. De esta forma aseguramos que el repositorio refleje el progreso en relación con los contenidos y habilidades adquiridas hasta esos momentos.
@@ -37,7 +35,6 @@ Fechas:
  * 26/10/2024
  * 23/11/2024
 
----
 
 # Glosario
 
