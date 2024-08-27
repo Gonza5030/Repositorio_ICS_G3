@@ -10,10 +10,10 @@ Repositorio para el uso durante el cursado de la materia Ingeniería y Calidad d
   * Tosello Guillermina
   * Weihmuller Matias
     
- #  Link al Informe
+##  Link al Informe
  
 
-# Listado Items de Configuración 
+## Listado Items de Configuración 
 
 | **Nombre del Ítem de Configuración**                       | **Regla de Nombrado**                                       | **Ubicación Física**                                                      |
 |------------------------------------------------------------|-------------------------------------------------------------|---------------------------------------------------------------------------|
@@ -28,7 +28,7 @@ Repositorio para el uso durante el cursado de la materia Ingeniería y Calidad d
 | Recuperatorio                                              | `Recuperatorio_<N_PARCIAL>_<APELLIDO_INTEGRANTE>.pdf`       | `/Repositorio_ICS_G3/Parciales  `                                         |
 
 
-# Líneas Base
+## Líneas Base
 Estableceremos las líneas bases considerando la fecha de los parciales, realizándolas el mismo día, luego de haber completado el exámen. De esta forma aseguramos que el repositorio refleje el progreso en relación con los contenidos y habilidades adquiridas hasta esos momentos.
 
 Fechas:
@@ -37,7 +37,7 @@ Fechas:
  * 23/11/2024
 
 
-# Glosario
+## Glosario
 
 | **Sigla**                 | **Significado**                                                      |
 |---------------------------|----------------------------------------------------------------------|
