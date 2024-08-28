@@ -21,10 +21,10 @@ Repositorio para el uso durante el cursado de la materia Ingeniería y Calidad d
 | Bibliografía                                               | `<NOMBRE_BLI>.pdf`                                          | `/Repositorio_ICS_G3/Material/Bibliografía`                               |
 | Presentaciones de Clase                                    | `<N>_<TEMA>.pdf`                                            | `/Repositorio_ICS_G3/Material/PresentacionesDeClase`                      |
 | Clases Grabadas                                            | `Clases_Grabadas.xslx`                                      | `/Repositorio_ICS_G3/Material`                                            |
-| Trabajo Grupal Evaluable                                   | `TP_<N>.pdf`                                                | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosEvaluables`       |
-| Trabajo de investigación                                   | `<NOMBRE_TIG>.pdf`                                          | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosEvaluables`       |
+| Trabajo Grupal Evaluable                                   | `TP_<N>.pdf`                                                | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosEvaluables/TP_<N>`       |
+| Trabajo de investigación                                   | `<NOMBRE_TIG>.pdf`                                          | `/Repositorio_ICS_G3/TrabajosPracticos/<NOMBRE_TIG>`       |
 | Programa Asignatura                                        | `ProgramaAsignatura_2024.pdf`                               | `/Repositorio_ICS_G3 `                                                    |
-| Trabajo Grupal No Evaluable                                | `TP_<N>.pdf`                                                | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosNoEvaluables  `   |
+| Trabajo Grupal No Evaluable                                | `TP_<N>.pdf`                                                | `/Repositorio_ICS_G3/TrabajosPracticos/TrabajosPracticosNoEvaluables/TP_<N>  `   |
 | Parciales                                                  | `Parcial_<N>_<APELLIDO_INTEGRANTE>.pdf`                     | `/Repositorio_ICS_G3/Parciales  `                                         |
 | Recuperatorio                                              | `Recuperatorio_<N_PARCIAL>_<APELLIDO_INTEGRANTE>.pdf`       | `/Repositorio_ICS_G3/Parciales  `                                         |
 
