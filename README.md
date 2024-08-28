@@ -10,7 +10,8 @@ Repositorio para el uso durante el cursado de la materia Ingeniería y Calidad d
   * Tosello Guillermina
   * Weihmuller Matias
     
-##  Link al Informe
+##  [Documento de Gestion de Configuración De Software](https://github.com/Gonza5030/Repositorio_ICS_G3/blob/main/TrabajosPracticos/TrabajosPracticosEvaluables/TP_4/TP_4.pdf)
+
  
 
 ## Listado Items de Configuración 
