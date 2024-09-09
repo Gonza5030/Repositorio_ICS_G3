@@ -1,91 +1,64 @@
 # views.py
+from reactpy import component, html, use_state
 from payment_processor import procesar_pago
-from notifications import enviar_notificacion_push, enviar_correo
+from notifications import enviar_correo, enviar_notificacion_push
 
 
-class CotizacionView:
-    def __init__(self, cotizacion):
-        self.cotizacion = cotizacion
-        self.forma_pago_seleccionada = None
+@component
+def CotizacionView(cotizacion):
+    forma_pago, set_forma_pago = use_state("")
+    estado_cotizacion, set_estado_cotizacion = use_state(cotizacion.estado)
+    pago_exitoso, set_pago_exitoso = use_state(None)
 
-    def mostrar_detalles(self):
-        if self.cotizacion.estado == "Confirmado":
-            print("Esta cotización ya ha sido confirmada. No se puede modificar.")
+    def aceptar_cotizacion(event):
+        if estado_cotizacion == "Confirmado":
+            print("La cotización ya ha sido confirmada.")
             return
-
-        print(f"Transportista: {self.cotizacion.transportista.nombre}")
-        print(f"Calificación: {self.cotizacion.transportista.calificacion}")
-        print(f"Fecha de retiro: {self.cotizacion.fecha_retiro}")
-        print(f"Fecha de entrega: {self.cotizacion.fecha_entrega}")
-        print(f"Importe del viaje: {self.cotizacion.importe}")
-        print(f"Formas de pago disponibles: {', '.join(self.cotizacion.formas_pago)}")
-
-        self.elegir_forma_pago()
-
-    def elegir_forma_pago(self):
-        forma_pago = input("Elija una forma de pago: ").strip()
-
-        if not forma_pago:
-            print("Debe elegir una forma de pago. Intente de nuevo.")
-            return self.elegir_forma_pago()
-
-        if forma_pago not in self.cotizacion.formas_pago:
-            print("Forma de pago no válida. Intente de nuevo.")
-            return self.elegir_forma_pago()
-
-        self.forma_pago_seleccionada = forma_pago
-
-        if forma_pago == "Tarjeta":
-            self.procesar_pago_tarjeta()
+        if forma_pago == "":
+            set_pago_exitoso(False)
+            print("Debe elegir una forma de pago.")
+        elif forma_pago == "Tarjeta":
+            procesar_pago_tarjeta()
         else:
-            self.confirmar_cotizacion(forma_pago)
+            confirmar_cotizacion(forma_pago)
 
-    def procesar_pago_tarjeta(self):
-        tarjeta = input("Ingrese el número de la tarjeta: ").strip()
-        if not tarjeta:
-            print("Número de tarjeta no válido.")
-            return self.elegir_forma_pago()
-
-        pin = input("Ingrese el PIN de la tarjeta: ").strip()
-        if not pin:
-            print("PIN no válido.")
-            return self.elegir_forma_pago()
-
-        nombre_completo = input("Ingrese el nombre completo: ").strip()
-        if not nombre_completo:
-            print("Nombre no válido.")
-            return self.elegir_forma_pago()
-
-        tipo_documento = input("Ingrese el tipo de documento: ").strip()
-        if not tipo_documento:
-            print("Tipo de documento no válido.")
-            return self.elegir_forma_pago()
-
-        numero_documento = input("Ingrese el número de documento: ").strip()
-        if not numero_documento:
-            print("Número de documento no válido.")
-            return self.elegir_forma_pago()
-
-        tipo_tarjeta = input("¿Es una tarjeta de crédito o débito? ").strip().lower()
-        exito, nro_pago = procesar_pago(
-            tarjeta, pin, nombre_completo, tipo_documento, numero_documento, tipo_tarjeta
-        )
-
-        if exito:
-            print(f"Pago procesado correctamente. Número de pago: {nro_pago}")
-            self.confirmar_cotizacion("Tarjeta")
+    def procesar_pago_tarjeta():
+        # Aquí se simula la entrada de los datos de la tarjeta
+        print("Procesando pago con tarjeta...")
+        tarjeta_valida, nro_pago = procesar_pago("1234567890123456", "1234", "Juan Perez", "DNI", "12345678", "credito")
+        if tarjeta_valida:
+            confirmar_cotizacion("Tarjeta")
+            set_pago_exitoso(True)
+            print(f"Pago exitoso, número de pago: {nro_pago}")
         else:
-            print("El pago fue rechazado. Intente con otra tarjeta o elija otro método de pago.")
-            self.elegir_forma_pago()
+            set_pago_exitoso(False)
+            print("El pago fue rechazado.")
 
-    def confirmar_cotizacion(self, forma_pago):
-        if self.cotizacion.estado == "Confirmado":
-            print("Esta cotización ya ha sido confirmada. No se puede modificar.")
-            return
+    def confirmar_cotizacion(forma_pago):
+        set_estado_cotizacion("Confirmado")
+        enviar_notificacion_push(cotizacion.transportista)
+        enviar_correo(cotizacion.transportista)
+        print(f"¡Cotización confirmada con forma de pago: {forma_pago}!")
 
-        self.cotizacion.estado = "Confirmado"
-        print(f"¡Cotización confirmada! Forma de pago: {forma_pago}")
+    return html.div(
+        {"class": "cotizacion-container"},
+        html.h2(f"Transportista: {cotizacion.transportista.nombre}"),
+        html.p(f"Calificación: {cotizacion.transportista.calificacion}"),
+        html.p(f"Fecha de retiro: {cotizacion.fecha_retiro}"),
+        html.p(f"Fecha de entrega: {cotizacion.fecha_entrega}"),
+        html.p(f"Importe del viaje: {cotizacion.importe}"),
+        html.p(f"Formas de pago: {', '.join(cotizacion.formas_pago)}"),
 
-        # Enviar notificaciones
-        enviar_notificacion_push(self.cotizacion.transportista)
-        enviar_correo(self.cotizacion.transportista)
+        # Input para seleccionar forma de pago
+        html.select(
+            {"on_change": lambda event: set_forma_pago(event["target"]["value"])},
+            html.option({"value": ""}, "Seleccione una forma de pago"),
+            *[html.option({"value": forma}, forma) for forma in cotizacion.formas_pago]
+        ),
+
+        html.button({"on_click": aceptar_cotizacion}, "Aceptar cotización"),
+
+        html.p("Estado: " + estado_cotizacion),
+        html.p("Pago exitoso" if pago_exitoso else "Pago rechazado")
+    )
+    
