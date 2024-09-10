@@ -1,4 +1,3 @@
-# main.py
 from flask import Flask, render_template, request, redirect, url_for
 from models.transportista import Transportista
 from models.cotizacion import Cotizacion
@@ -20,10 +19,10 @@ def index():
                             fecha_entrega=cotizacion.fecha_entrega,
                             importe=cotizacion.importe)
 
-
 @app.route('/procesar_pago', methods=['POST'])
 def procesar_pago_view():
     forma_pago = request.form.get('forma_pago')
+    fecha_vto = request.form.get('fecha_vto')
 
     if forma_pago == 'tarjeta':
         numero_tarjeta = request.form.get('numero_tarjeta')
@@ -32,17 +31,18 @@ def procesar_pago_view():
         tipo_documento = request.form.get('tipo_documento')
         numero_documento = request.form.get('numero_documento')
 
-        if validar_tarjeta(numero_tarjeta, pin, nombre_completo, tipo_documento, numero_documento):
-            pago_exitoso, mensaje = procesar_pago("tarjeta", cotizacion.importe)
-            if pago_exitoso:
-                cotizacion.estado = "Confirmado"
-                enviar_notificacion_push(cotizacion.transportista, forma_pago)
-                enviar_email_confirmacion(cotizacion.transportista, forma_pago)
-                return f"Pago procesado correctamente. Nro. de pago: {mensaje}"
-            else:
-                return f"Pago rechazado: {mensaje}"  # Devuelve el mensaje de saldo insuficiente
+        es_valido, mensaje = validar_tarjeta(numero_tarjeta, pin, nombre_completo, tipo_documento, numero_documento, fecha_vto)
+        if not es_valido:
+            return mensaje  # Devuelve el mensaje de error de validación
+
+        pago_exitoso, mensaje = procesar_pago("tarjeta", cotizacion.importe)
+        if pago_exitoso:
+            cotizacion.estado = "Confirmado"
+            enviar_notificacion_push(cotizacion.transportista, forma_pago)
+            enviar_email_confirmacion(cotizacion.transportista, forma_pago)
+            return f"Pago procesado correctamente. Nro. de pago: {mensaje}"
         else:
-            return "Datos de tarjeta inválidos."
+            return f"Pago rechazado: {mensaje}"  # Devuelve el mensaje de saldo insuficiente
     else:
         cotizacion.estado = "Confirmado"
         enviar_notificacion_push(cotizacion.transportista, forma_pago)

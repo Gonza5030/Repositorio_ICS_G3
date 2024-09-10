@@ -1,71 +1,74 @@
-/* static/css/styles.css */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
+/* styles.css */
 
+/* Estilos generales para el contenedor */
 .container {
-    width: 90%;
-    max-width: 800px;
-    margin: 20px auto;
-    background: #fff;
+    width: 60%;
+    height: 80%;
+    margin: 0 auto;
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    text-align: center;
+/* Estilo para los encabezados */
+h1, h3 {
     color: #333;
 }
 
+/* Estilo para el formulario */
 form {
-    display: flex;
-    flex-direction: column;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-input[type="text"], input[type="password"], select {
+/* Estilo para los campos de entrada */
+input[type="text"],
+input[type="password"],
+select {
+    width: 100%;
     padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
-input[type="submit"] {
-    margin-top: 20px;
+/* Estilo para el botón de aceptar cotización */
+#btn_aceptar {
+    width: 100%;
     padding: 15px;
-    background-color: #5cb85c;
-    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: not-allowed;
+}
+
+/* Estado habilitado del botón */
+#btn_aceptar.enabled {
+    background-color: green; /* Color cuando está habilitado y válido */
     cursor: pointer;
 }
 
-input[type="submit"]:hover {
-    background-color: #4cae4c;
+/* Estado deshabilitado del botón */
+#btn_aceptar.disabled {
+    background-color: red; /* Color cuando está deshabilitado y no válido */
+    cursor: not-allowed;
 }
 
+/* Estilo para la sección de datos de tarjeta */
+#datos_tarjeta {
+    margin: 20px 0;
+}
+
+/* Estilo para las etiquetas */
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+/* Estilo para el mensaje de alerta */
 .mensaje {
-    text-align: center;
+    color: #d9534f; /* Color rojo para el mensaje de error */
+    font-size: 16px;
     margin-top: 20px;
-    padding: 15px;
-    display: none;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .container {
-        width: 100%;
-        padding: 15px;
-    }
-
-    input[type="submit"] {
-        padding: 10px;
-    }
 }
