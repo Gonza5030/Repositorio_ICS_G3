@@ -155,6 +155,10 @@
                 btnAceptar.classList.add('enabled');
                 btnAceptar.classList.remove('disabled');
             }
+            if (formaPago === '') {
+                btnAceptar.classList.add('disabled');
+                btnAceptar.classList.remove('enabled');
+            }
         }
 
         function mostrarNotificacionPush(mensaje) {
