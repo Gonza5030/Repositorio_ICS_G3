@@ -10,18 +10,18 @@ def validar_tarjeta(numero_tarjeta, pin, nombre_completo, tipo_documento, numero
     vencimiento_valid = re.match(r'^\d{2}/\d{2}$', fecha_vencimiento)
 
     if not all([pin_valid, tarjeta_valid, nombre_valid, documento_valid, vencimiento_valid]):
-        return False, "Error en datos de la tarjeta"
+        return False, "Error en datos de la tarjeta."
     
     # Validar que la fecha de vencimiento es futura
     try:
         mes, anio = map(int, fecha_vencimiento.split('/'))
         fecha_vto = datetime(year=anio + 2000, month=mes, day=1)
         if fecha_vto < datetime.now():
-            return False, "Tarjeta vencida"
+            return False, "Tarjeta vencida."
     except ValueError:
-        return False, "Tarjeta vencida"
+        return False, "Tarjeta vencida."
 
-    return True, "Datos correctos de la tarjeta"
+    return True, "Datos correctos de la tarjeta."
 
 def procesar_pago(metodo_pago, importe):
     # Simular una verificación de saldo

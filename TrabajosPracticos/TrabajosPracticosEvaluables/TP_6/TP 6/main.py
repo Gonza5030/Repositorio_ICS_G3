@@ -8,47 +8,72 @@ app = Flask(__name__)
 
 # Datos de prueba (puedes cargarlo de una base de datos en un caso real)
 transportista = Transportista("Juan Pérez", 4.7)
-cotizacion = Cotizacion(transportista, "2024-09-10", "2024-09-12", 1500, ["tarjeta", "contado al retirar", "contado contra entrega"])
+cotizacion = Cotizacion(
+    transportista,
+    "2024-09-10",
+    "2024-09-12",
+    1500,
+    ["tarjeta", "contado al retirar", "contado contra entrega"],
+)
 
-@app.route('/')
+
+@app.route("/")
 def index():
-    return render_template('cotizacion.html', 
-                            transportista_nombre=cotizacion.transportista.nombre,
-                            transportista_calificacion=cotizacion.transportista.calificacion,
-                            fecha_retiro=cotizacion.fecha_retiro,
-                            fecha_entrega=cotizacion.fecha_entrega,
-                            importe=cotizacion.importe)
+    return render_template(
+        "cotizacion.html",
+        transportista_nombre=cotizacion.transportista.nombre,
+        transportista_calificacion=cotizacion.transportista.calificacion,
+        fecha_retiro=cotizacion.fecha_retiro,
+        fecha_entrega=cotizacion.fecha_entrega,
+        importe=cotizacion.importe,
+    )
 
-@app.route('/procesar_pago', methods=['POST'])
+
+@app.route("/procesar_pago", methods=["POST"])
 def procesar_pago_view():
-    forma_pago = request.form.get('forma_pago')
-    fecha_vto = request.form.get('fecha_vto')
+    forma_pago = request.form.get("forma_pago")
+    fecha_vto = request.form.get("fecha_vto")
 
-    if forma_pago == 'tarjeta':
-        numero_tarjeta = request.form.get('numero_tarjeta')
-        pin = request.form.get('pin')
-        nombre_completo = request.form.get('nombre_completo')
-        tipo_documento = request.form.get('tipo_documento')
-        numero_documento = request.form.get('numero_documento')
-        fecha_vto = request.form.get('fecha_vencimiento')
+    if forma_pago == "tarjeta":
+        numero_tarjeta = request.form.get("numero_tarjeta")
+        pin = request.form.get("pin")
+        nombre_completo = request.form.get("nombre_completo")
+        tipo_documento = request.form.get("tipo_documento")
+        numero_documento = request.form.get("numero_documento")
+        fecha_vto = request.form.get("fecha_vencimiento")
 
-        es_valido, mensaje = validar_tarjeta(numero_tarjeta, pin, nombre_completo, tipo_documento, numero_documento, fecha_vto)
+        es_valido, mensaje = validar_tarjeta(
+            numero_tarjeta,
+            pin,
+            nombre_completo,
+            tipo_documento,
+            numero_documento,
+            fecha_vto,
+        )
         if not es_valido:
             return mensaje  # Devuelve el mensaje de error de validación
 
         pago_exitoso, mensaje = procesar_pago("tarjeta", cotizacion.importe)
         if pago_exitoso:
             cotizacion.estado = "Confirmado"
-            enviar_notificacion_push(cotizacion.transportista, forma_pago)
-            enviar_email_confirmacion(cotizacion.transportista, forma_pago)
-            return f"Pago procesado correctamente. Nro. de pago: {mensaje}"
+            notificacion_push = enviar_notificacion_push(
+                cotizacion.transportista.nombre, forma_pago
+            )
+            mail = enviar_email_confirmacion(
+                cotizacion.transportista.nombre, forma_pago
+            )
+            return f"Pago procesado correctamente. Número de pago {mensaje}.\n\n{notificacion_push}\n\n{mail}"
         else:
-            return f"Pago rechazado: {mensaje}"  # Devuelve el mensaje de saldo insuficiente
+            return f"Pago rechazado: {mensaje}."  # Devuelve el mensaje de saldo insuficiente
     else:
-        cotizacion.estado = "Confirmado"
-        mensaje = enviar_notificacion_push(cotizacion.transportista, forma_pago)
-        mail = enviar_email_confirmacion(cotizacion.transportista, forma_pago)
-        return f"{mensaje, mail}"
+        cotizacion.estado = "Confirmado."
 
-if __name__ == '__main__':
+        notificacion_push = enviar_notificacion_push(
+            cotizacion.transportista.nombre, forma_pago
+        )
+        mail = enviar_email_confirmacion(cotizacion.transportista.nombre, forma_pago)
+        return f"{notificacion_push}\n\n{mail}"
+
+
+if __name__ == "__main__":
     app.run(debug=True)
