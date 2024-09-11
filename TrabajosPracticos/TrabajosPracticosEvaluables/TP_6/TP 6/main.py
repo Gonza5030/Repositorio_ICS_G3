@@ -30,6 +30,7 @@ def procesar_pago_view():
         nombre_completo = request.form.get('nombre_completo')
         tipo_documento = request.form.get('tipo_documento')
         numero_documento = request.form.get('numero_documento')
+        fecha_vto = request.form.get('fecha_vencimiento')
 
         es_valido, mensaje = validar_tarjeta(numero_tarjeta, pin, nombre_completo, tipo_documento, numero_documento, fecha_vto)
         if not es_valido:
@@ -46,8 +47,8 @@ def procesar_pago_view():
     else:
         cotizacion.estado = "Confirmado"
         mensaje = enviar_notificacion_push(cotizacion.transportista, forma_pago)
-        enviar_email_confirmacion(cotizacion.transportista, forma_pago)
-        return f"{mensaje}"
+        mail = enviar_email_confirmacion(cotizacion.transportista, forma_pago)
+        return f"{mensaje, mail}"
 
 if __name__ == '__main__':
     app.run(debug=True)
