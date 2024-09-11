@@ -45,9 +45,9 @@ def procesar_pago_view():
             return f"Pago rechazado: {mensaje}"  # Devuelve el mensaje de saldo insuficiente
     else:
         cotizacion.estado = "Confirmado"
-        enviar_notificacion_push(cotizacion.transportista, forma_pago)
+        mensaje = enviar_notificacion_push(cotizacion.transportista, forma_pago)
         enviar_email_confirmacion(cotizacion.transportista, forma_pago)
-        return f"Has seleccionado {forma_pago}. Cotización confirmada."
+        return f"{mensaje}"
 
 if __name__ == '__main__':
     app.run(debug=True)

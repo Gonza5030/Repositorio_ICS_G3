@@ -19,21 +19,55 @@
             background-color: red; /* Color cuando está deshabilitado y no válido */
             cursor: not-allowed;
         }
+        
+        /* Estilo para ocultar el botón de volver */
+        .btn-volver {
+            display: none; /* Ocultarlo por defecto */
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            width: 62%;
+            height: 100px;
+            position: fixed;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-volver:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        /* Estilo de la flecha en el botón */
+        .btn-volver .flecha {
+            margin-left: 10px;
+            font-weight: bold;
+            transition: margin-left 0.2s;
+        }
+
+        .btn-volver:hover .flecha {
+            margin-left: 15px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Aceptar Cotización</h1>
         <form id="form_pago" method="POST">
+            <!-- Sección de detalles del transportista -->
             <h3>Detalles del Transportista</h3>
             <p><strong>Nombre:</strong> {{ transportista_nombre }}</p>
             <p><strong>Calificación:</strong> {{ transportista_calificacion }}</p>
 
+            <!-- Sección de detalles del viaje -->
             <h3>Detalles del Viaje</h3>
             <p><strong>Fecha de Retiro:</strong> {{ fecha_retiro }}</p>
             <p><strong>Fecha de Entrega:</strong> {{ fecha_entrega }}</p>
             <p><strong>Importe del Viaje:</strong> ${{ importe }}</p>
 
+            <!-- Sección de formas de pago -->
             <h3>Formas de Pago</h3>
             <select name="forma_pago" id="forma_pago" required>
                 <option value="">Seleccione una opción</option>
@@ -76,7 +110,14 @@
 
             <input type="submit" id="btn_aceptar" value="Aceptar Cotización" class="disabled" disabled>
         </form>
-        <div id="mensaje" class="mensaje"></div>
+
+        <!-- Área para mostrar la notificación push -->
+        <div id="notificacion_push" class="mensaje"></div>
+
+        <!-- Botón para volver a la aplicación -->
+        <button id="btn_volver" class="btn-volver">
+            Volver a la aplicación<span class="flecha">→</span>
+        </button>
     </div>
 
     <script>
@@ -116,6 +157,22 @@
             }
         }
 
+        function mostrarNotificacionPush(mensaje) {
+            const notificacionPush = document.getElementById('notificacion_push');
+            notificacionPush.textContent = mensaje;
+        }
+
+        function mostrarBotonVolver() {
+            const btnVolver = document.getElementById('btn_volver');
+            btnVolver.style.display = 'inline-block'; // Mostrar el botón
+        }
+
+        function volverAFormulario() {
+            document.getElementById('form_pago').style.display = 'block'; // Mostrar el formulario
+            document.getElementById('notificacion_push').style.display = 'none'; // Ocultar el mensaje de notificación
+            document.getElementById('btn_volver').style.display = 'none'; // Ocultar el botón de volver
+        }
+
         document.getElementById('forma_pago').addEventListener('change', toggleFormControls);
         document.getElementById('form_pago').addEventListener('input', function() {
             if (document.getElementById('forma_pago').value === 'tarjeta') {
@@ -139,12 +196,16 @@
             .then(response => response.text())
             .then(data => {
                 alert(data);  // Mostrar el mensaje devuelto por el servidor
+                document.getElementById('form_pago').style.display = 'none'; // Oculta el formulario
+                mostrarBotonVolver(); // Muestra el botón de volver
             })
             .catch(error => {
                 console.error("Error al procesar el pago:", error);
                 alert("Hubo un problema con la solicitud.");
             });
         });
+
+        document.getElementById('btn_volver').addEventListener('click', volverAFormulario);
     </script>
 </body>
 </html>
