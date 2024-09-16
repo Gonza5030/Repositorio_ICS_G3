@@ -1,10 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for
+import os
+from flask import Flask, render_template, request
 from models.transportista import Transportista
 from models.cotizacion import Cotizacion
 from utils.pago import validar_tarjeta, procesar_pago
 from services.notificaciones import enviar_notificacion_push, enviar_email_confirmacion
+from dotenv import load_dotenv
+
+# Cargar variables del archivo .env
+load_dotenv()
 
 app = Flask(__name__)
+
+# Obtener el email del transportista desde el .env
+transportista_email = os.getenv("EMAIL_USER")
 
 # Datos de prueba (puedes cargarlo de una base de datos en un caso real)
 transportista = Transportista("Juan Pérez", 4.7)
@@ -15,7 +23,6 @@ cotizacion = Cotizacion(
     1500,
     ["tarjeta", "contado al retirar", "contado contra entrega"],
 )
-
 
 @app.route("/")
 def index():
@@ -28,11 +35,9 @@ def index():
         importe=cotizacion.importe,
     )
 
-
 @app.route("/procesar_pago", methods=["POST"])
 def procesar_pago_view():
     forma_pago = request.form.get("forma_pago")
-    fecha_vto = request.form.get("fecha_vto")
 
     if forma_pago == "tarjeta":
         numero_tarjeta = request.form.get("numero_tarjeta")
@@ -60,20 +65,28 @@ def procesar_pago_view():
                 cotizacion.transportista.nombre, forma_pago
             )
             mail = enviar_email_confirmacion(
-                cotizacion.transportista.nombre, forma_pago
+                cotizacion.transportista.nombre, 
+                transportista_email,  
+                forma_pago
             )
             return f"Pago procesado correctamente. Número de pago {mensaje}.\n\n{notificacion_push}\n\n{mail}"
         else:
             return f"Pago rechazado: {mensaje}."  # Devuelve el mensaje de saldo insuficiente
     else:
-        cotizacion.estado = "Confirmado."
+        cotizacion.estado = "Confirmado"
 
+        # Enviar notificación push
         notificacion_push = enviar_notificacion_push(
             cotizacion.transportista.nombre, forma_pago
         )
-        mail = enviar_email_confirmacion(cotizacion.transportista.nombre, forma_pago)
-        return f"{notificacion_push}\n\n{mail}"
 
+        # Enviar email al transportista
+        mail = enviar_email_confirmacion(
+            cotizacion.transportista.nombre,
+            transportista_email,  
+            forma_pago
+        )
+        return f"{notificacion_push}\n\n{mail}"
 
 if __name__ == "__main__":
     app.run(debug=True)

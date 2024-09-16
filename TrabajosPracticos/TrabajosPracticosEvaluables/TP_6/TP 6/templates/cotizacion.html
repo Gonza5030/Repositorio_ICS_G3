@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
 
-
     <style>
         /* Cambiar el color del botón según la validez */
         #btn_aceptar {
@@ -195,6 +194,10 @@
             event.preventDefault();  // Evita la recarga de la página
             const formData = new FormData(this);
 
+            // Deshabilitar el botón para prevenir envíos múltiples
+            const btnAceptar = document.getElementById('btn_aceptar');
+            btnAceptar.disabled = true;
+
             // Enviar la solicitud AJAX al backend
             fetch('/procesar_pago', {
                 method: 'POST',
@@ -209,6 +212,8 @@
             .catch(error => {
                 console.error("Error al procesar el pago:", error);
                 alert("Hubo un problema con la solicitud.");
+                // Rehabilitar el botón en caso de error
+                btnAceptar.disabled = false;
             });
         });
 
