@@ -28,7 +28,13 @@ def enviar_email_confirmacion(transportista, email, forma_pago):
     try:
         # Configurar el correo electrónico
         subject = "Confirmación de Cotización Aceptada"
-        body = f"Hola {transportista},\n\nTu cotización ha sido confirmada con la forma de pago: {forma_pago}."
+        mensajes = {
+        "tarjeta": "Tarjeta",
+        "contado_retiro": "Contado Al Retirar",
+        "contado_entrega": "Contado Contra Entrega",
+        }
+        mensaje = mensajes.get(forma_pago)
+        body = f"Hola {transportista},\n\nTu cotización ha sido confirmada con la forma de pago: {mensaje}."
         
         # Crear el mensaje de correo electrónico
         msg = MIMEMultipart()
