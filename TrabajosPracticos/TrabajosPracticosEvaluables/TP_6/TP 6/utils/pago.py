@@ -2,6 +2,7 @@ import re
 from datetime import datetime
 import random
 
+
 def validar_tarjeta(numero_tarjeta, pin, nombre_completo, tipo_documento, numero_documento, fecha_vencimiento):
     # Validar cada campo
     pin_valid = re.match(r'^\d{4}$', pin)
@@ -25,14 +26,15 @@ def validar_tarjeta(numero_tarjeta, pin, nombre_completo, tipo_documento, numero
         return False, "Tarjeta vencida."
     return True, "Datos correctos de la tarjeta."
 
+
 def procesar_pago(metodo_pago, importe):
     # Simular una verificación de saldo
-    saldo_disponible = 2000  # Ejemplo: el saldo de la tarjeta es $2000
+    saldo_disponible = 2000  # Ejemplo: el saldo de la tarjeta es $2000, hardcodeado
     
     if metodo_pago == "tarjeta" and importe > saldo_disponible:
         return False, "Saldo insuficiente"  # Pago rechazado por saldo insuficiente
     
-     # Si el pago es exitoso, generamos un número de transacción aleatorio
+    # Si el pago es exitoso, generamos un número de transacción aleatorio
     numero_transaccion = str(random.randint(100000000, 999999999))  # Número aleatorio de 9 dígitos
 
     # Si el pago es exitoso, devolvemos el número de transacción

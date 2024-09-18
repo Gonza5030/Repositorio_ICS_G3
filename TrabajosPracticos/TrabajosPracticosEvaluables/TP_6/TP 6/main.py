@@ -1,10 +1,12 @@
 import os
+
 from flask import Flask, render_template, request
+from dotenv import load_dotenv
+
 from models.transportista import Transportista
 from models.cotizacion import Cotizacion
 from utils.pago import validar_tarjeta, procesar_pago
 from services.notificaciones import enviar_notificacion_push, enviar_email_confirmacion
-from dotenv import load_dotenv
 
 # Cargar variables del archivo .env
 load_dotenv()
@@ -24,6 +26,7 @@ cotizacion = Cotizacion(
     ["tarjeta", "contado al retirar", "contado contra entrega"],
 )
 
+
 @app.route("/")
 def index():
     return render_template(
@@ -34,6 +37,7 @@ def index():
         fecha_entrega=cotizacion.fecha_entrega,
         importe=cotizacion.importe,
     )
+
 
 @app.route("/procesar_pago", methods=["POST"])
 def procesar_pago_view():
@@ -66,8 +70,8 @@ def procesar_pago_view():
                     cotizacion.transportista.nombre, forma_pago
                 )
                 mail = enviar_email_confirmacion(
-                    cotizacion.transportista.nombre, 
-                    transportista_email,  
+                    cotizacion.transportista.nombre,
+                    transportista_email,
                     forma_pago
                 )
                 return f"Pago procesado correctamente. Número de pago {mensaje}.\n\n{notificacion_push}\n\n{mail}"
@@ -87,12 +91,13 @@ def procesar_pago_view():
             # Enviar email al transportista
             mail = enviar_email_confirmacion(
                 cotizacion.transportista.nombre,
-                transportista_email,  
+                transportista_email,
                 forma_pago
             )
             return f"{notificacion_push}\n\n{mail}"
         else:
             return f"Ya ha sido aceptado"
+
 
 if __name__ == "__main__":
     app.run(debug=True)
