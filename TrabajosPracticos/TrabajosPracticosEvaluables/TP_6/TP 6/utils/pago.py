@@ -12,14 +12,18 @@ def validar_tarjeta(numero_tarjeta, pin, nombre_completo, tipo_documento, numero
     if not all([pin_valid, tarjeta_valid, nombre_valid, documento_valid, vencimiento_valid]):
         return False, "Error en datos de la tarjeta."
     
+    
     # Validar que la fecha de vencimiento es futura
     try:
         mes, anio = map(int, fecha_vencimiento.split('/'))
+        if 0 > mes or mes > 13:
+            return False, "Mes inválido"
         fecha_vto = datetime(year=anio + 2000, month=mes, day=1)
         if fecha_vto < datetime.now():
-            return False, "Tarjeta vencida."
+            return False, "por el try Tarjeta vencida."
     except ValueError:
-        return False, "Tarjeta vencida."
+        return False, "por el expet Tarjeta vencida."
+
 
     return True, "Datos correctos de la tarjeta."
 
