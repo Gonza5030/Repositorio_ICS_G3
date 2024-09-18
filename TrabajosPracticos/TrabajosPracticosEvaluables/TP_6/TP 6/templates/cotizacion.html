@@ -196,7 +196,9 @@
 
             // Deshabilitar el botón para prevenir envíos múltiples
             const btnAceptar = document.getElementById('btn_aceptar');
-            btnAceptar.disabled = true;
+            btnAceptar.disabled = true; 
+            btnAceptar.classList.add('disabled');
+            btnAceptar.classList.remove('enabled');
 
             // Enviar la solicitud AJAX al backend
             fetch('/procesar_pago', {
@@ -206,14 +208,16 @@
             .then(response => response.text())
             .then(data => {
                 alert(data);  // Mostrar el mensaje devuelto por el servidor
-                document.getElementById('form_pago').style.display = 'none'; // Oculta el formulario
-                mostrarBotonVolver(); // Muestra el botón de volver
+                document.getElementById('form_pago').style.display = 'none'; // Ocultar el formulario
+                mostrarBotonVolver(); // Mostrar el botón de volver
             })
             .catch(error => {
                 console.error("Error al procesar el pago:", error);
                 alert("Hubo un problema con la solicitud.");
                 // Rehabilitar el botón en caso de error
                 btnAceptar.disabled = false;
+                btnAceptar.classList.remove('disabled');
+                btnAceptar.classList.add('enabled');
             });
         });
 
