@@ -78,7 +78,7 @@ def procesar_pago_view():
             else:
                 return f"Pago rechazado: {mensaje}."  # Devuelve el mensaje de saldo insuficiente
         else:
-            return f"Ya ha sido aceptado"
+            return f"La cotización ya ha sido aceptada"
     else:
         if cotizacion.estado != "Confirmado":
             cotizacion.estado = "Confirmado"
@@ -96,7 +96,7 @@ def procesar_pago_view():
             )
             return f"{notificacion_push}\n\n{mail}"
         else:
-            return f"Ya ha sido aceptado"
+            return f"La cotización ya ha sido aceptada"
 
 
 if __name__ == "__main__":
