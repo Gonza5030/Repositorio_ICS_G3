@@ -30,7 +30,7 @@ Repositorio para el uso durante el cursado de la materia Ingeniería y Calidad d
 
 
 ## Líneas Base
-Estableceremos las líneas bases considerando la fecha de los parciales, el criterio definido será marcar una linea base el primer día habil luego del examen. De esta forma aseguramos que el repositorio refleje el progreso en relación con los contenidos y habilidades adquiridas hasta esos momentos.
+Estableceremos las líneas bases considerando la fecha de los parciales, el criterio definido será marcar una línea base el primer día habil luego del examen. De esta forma aseguramos que el repositorio refleje el progreso en relación con los contenidos y habilidades adquiridas hasta esos momentos.
 
 Fechas:
  * 30/09/2024
